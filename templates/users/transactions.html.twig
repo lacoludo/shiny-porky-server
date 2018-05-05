@@ -1,0 +1,11 @@
+<table>
+{% for transaction in transactions %}
+    <tr>
+        <td>Porky {{ transaction['porky'] }} </td>
+        <td>Stripe id {{ transaction['datetime'] }} </td>
+        <td>gramme {{ transaction['gramme'] }} </td>
+        <td>Stripe id {{ transaction['transactionId'] }} </td>
+        <td><a href="porky/{{transaction['porky']}}/transaction/{{transaction['id']}}/edit">Modifier statut</a></td>
+    </tr>
+{% endfor %}
+</table>

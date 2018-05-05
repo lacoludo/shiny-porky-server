@@ -1,0 +1,9 @@
+<h2> Transaction N° {{ transaction['transactionId'] }} </h2>
+{{ form_start(form) }}
+    <div class="form_content input_align">
+        {{ form_label(form.status) }}
+        <div class="form_input">{{ form_widget(form.status) }}</div>
+        <div class="form_error">{{ form_errors(form.status)}}</div>
+    </div>
+    {{ form_widget(form) }}
+{{ form_end(form) }}
