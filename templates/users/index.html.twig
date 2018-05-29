@@ -1,8 +1,31 @@
-<table>
-{% for key, user in users %}
-    <tr>
-        <td>{{ user['firstName'] }} {{ user['lastName'] }}</td>
-        <td><a href="/users/{{ key }}/transactions">Voir</a></td>
-    </tr>
-{% endfor %}
-</table>
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>ID de l'utilisateur</th>
+                <th>Nom de l'utilisateur</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, user in users %}
+                <tr>
+                    <td>
+                        ID
+                    </td>
+                    <td>
+                        {{ user['firstName'] }} {{ user['lastName'] }}
+                    </td>
+                    <td class="right-align">
+                        <a href="/users/{{ key }}/transactions" class="waves-effect waves-light btn amber accent-4">
+                            <i class="material-icons left">shopping_cart</i>
+                            Voir transactions
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
