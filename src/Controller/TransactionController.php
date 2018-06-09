@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\TransactionType;
 
-class HomeController extends AbstractController
+class TransactionController extends AbstractController
 {
     /**
      * @Route("/users", name="app_users")
@@ -49,15 +49,19 @@ class HomeController extends AbstractController
         $snapshot = $reference->getSnapshot();
 
         $allTransactions = [];
+        $porkies = $snapshot->getValue();
+        
+        if ($porkies) {
+            foreach ($porkies as $key => $porky) {
+                if (isset($porky['transactions'])) {
+                    $transactions = $porky['transactions'];
 
-        $porkies = $snapshot->getValue();    
-        foreach ($porkies as $key => $porky) {
-            if (isset($porky['transactions'])) {
-                $transactions = $porky['transactions'];
-                foreach($transactions as $keyTransac => $transaction) {
-                    $transaction['porky'] = $key;
-                    $transaction['id'] = $keyTransac;
-                    $allTransactions[] = $transaction;
+                    foreach($transactions as $keyTransac => $transaction) {
+                        $transaction['porky'] = $key;
+                        $transaction['id'] = $keyTransac;
+                        $transaction['purchaseDate'] = new \Datetime('now');
+                        $allTransactions[] = $transaction;
+                    }
                 }
             }
         }
