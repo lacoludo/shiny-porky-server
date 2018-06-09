@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>Shiny Porky</title>
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" rel="stylesheet"/>
+        <style>
+            select {
+                display: block;
+            }
+            .amber.accent-4 {
+                background-color: #d4af37 !important;
+            }
+            .inline {
+                display: inline;
+            }
+            .box {
+                display: inline;
+                border: 1px solid #d8d8d8;
+                padding: 5px;
+            }
+        </style>
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <nav class="amber accent-4" role="navigation">
+            <div class="nav-wrapper container center-align">
+                <a href="#">Shiny Porky: back-office</a>
+            </div>
+        </nav>
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br>
+                <br>
+                <div class="row">
+                    {% block content %}{% endblock %}
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js"></script>
     </body>
 </html>

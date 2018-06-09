@@ -1,11 +1,37 @@
-<table>
-{% for transaction in transactions %}
-    <tr>
-        <td>Porky {{ transaction['porky'] }} </td>
-        <td>Stripe id {{ transaction['datetime'] }} </td>
-        <td>gramme {{ transaction['gramme'] }} </td>
-        <td>Stripe id {{ transaction['transactionId'] }} </td>
-        <td><a href="porky/{{transaction['porky']}}/transaction/{{transaction['id']}}/edit">Modifier statut</a></td>
-    </tr>
-{% endfor %}
-</table>
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>ID du porky (Firebase)</th>
+                <th>Date</th>
+                <th>Nombre de grammes d'or</th>
+                <th>ID de la transaction (Stripe)</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for transaction in transactions %}
+            <tr>
+                <td>
+                    {{ transaction['porky'] }}
+                </td>
+                <td>
+                    {{ transaction['datetime']|date("F jS \\a\\t g:ia") }}
+                </td>
+                <td>
+                    {{ transaction['gramme'] }}
+                </td>
+                <td>
+                    {{ transaction['transactionId'] }}
+                </td>
+                <td>
+                    <a href="porky/{{transaction['porky']}}/transaction/{{transaction['id']}}/edit" class="waves-effect waves-light btn amber accent-4">
+                        <i class="material-icons left">verified_user</i>
+                        Modifier statut
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
